@@ -172,3 +172,6 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+cedas2025_material/
+cedas2025_material.zip
