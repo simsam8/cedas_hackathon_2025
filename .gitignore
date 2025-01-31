@@ -175,3 +175,5 @@ cython_debug/
 
 # data
 data/
+cedas2025_material/
+cedas2025_material.zip
