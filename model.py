@@ -9,14 +9,16 @@ class SimlpeLSTM(nn.Module):
     def __init__(self) -> None:
         super().__init__()
         self.lstm = nn.LSTM(
-            input_size=4, hidden_size=40, num_layers=8, batch_first=True
+            input_size=4, hidden_size=40, num_layers=15, batch_first=True
         )
-        self.fc = nn.Linear(40, 40)
+        self.fc1 = nn.Linear(40, 100)
+        self.fc2 = nn.Linear(100, 40)
 
     def forward(self, x):
         out, (hidden, cell) = self.lstm(x)
         x = hidden.squeeze()[-1]  # get last layer of lstm
-        x = F.relu(self.fc(x))
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
         return x
 
 
